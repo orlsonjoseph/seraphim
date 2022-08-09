@@ -5,7 +5,6 @@
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "action": {
-    "default_popup": "popup.html",
     "default_icon": "icon-34.png"
   },
   "icons": {
@@ -23,5 +22,11 @@
       "resources": ["content.styles.css", "icon-128.png", "icon-34.png"],
       "matches": []
     }
+  ],
+  "externally_connectable": {
+    "matches": ["http://127.0.0.1:7000/core/connect"]
+  },
+  "permissions": [
+    "storage", "tabs"
   ]
 }

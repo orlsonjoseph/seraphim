@@ -6,9 +6,9 @@ export function isSystemPage(tab) {
 
 export function isSystemLink(link) {
     return (
-        link.startsWith('chrome://') ||
         link.startsWith('chrome-extension://') ||
-        link.startsWith('chrome-search://')
+        link.startsWith('chrome-search://') ||
+        link.startsWith('chrome://')
     )
 }
 

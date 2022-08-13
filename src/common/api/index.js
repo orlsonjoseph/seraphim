@@ -1,3 +1,3 @@
-import { saveBookmark } from './bookmark/save'
+import { saveBookmark } from './bookmark/save';
 
-export default saveBookmark
+export default saveBookmark;

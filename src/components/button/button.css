@@ -1,0 +1,70 @@
+nodraft-button.pocket-button {
+  height: unset;
+  display: inline-block;
+  position: relative;
+  font-family: var(--fontSansSerif);
+  font-size: 16px;
+  line-height: 110%;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 8px 12px;
+  transition: all 0.15s ease-out;
+  text-decoration: none;
+  text-transform: none;
+  cursor: pointer;
+}
+
+nodraft-button.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+nodraft-button:focus {
+  outline: none;
+}
+
+nodraft-button::before {
+  content: '';
+  position: absolute;
+  border: 2px solid var(--color-actionFocus);
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  border-radius: 0.5rem;
+}
+nodraft-button:hover {
+  text-decoration: none;
+}
+nodraft-button::before {
+  display: none;
+}
+nodraft-button:active {
+  display: none;
+}
+
+nodraft-button.primary {
+  background-color: var(--color-actionPrimary);
+  border: 2px solid var(--color-actionPrimary);
+  color: var(--color-actionPrimaryText);
+}
+
+nodraft-button.secondary {
+  background: none;
+  border: 2px solid var(--color-actionSecondary);
+  color: var(--color-actionSecondaryText);
+}
+
+nodraft-button:hover {
+  background-color: var(--color-actionSecondaryHover);
+  color: var(--color-actionSecondaryHoverText);
+}
+nodraft-button.inline {
+  display: inline;
+  background: none;
+  padding: 0;
+  color: var(--color-inlineButton);
+  font-size: 14px;
+  font-weight: 500;
+}

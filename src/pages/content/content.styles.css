@@ -1,0 +1,13 @@
+:root {
+  font-family: sans-serif;
+}
+
+.nodraft-theme-dark {
+  --color-canvas: #121212;
+  --primary-text: #f2f2f2;
+}
+
+.nodraft-theme-light {
+  --color-canvas: #c2c2c2;
+  --primary-text: #121212;
+}

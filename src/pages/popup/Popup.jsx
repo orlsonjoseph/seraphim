@@ -4,9 +4,9 @@ import { retrieveToken } from '../../common/helpers';
 import { getConfiguration } from '../../common/interface';
 import './Popup.css';
 
-chrome.storage.local.get(['nodraft-extension-token'], function(result) {
-    console.log('Value currently is ' + result.key);
-  });
+chrome.storage.local.get(['nodraft-extension-token'], function (result) {
+  console.log('Value currently is ' + result.key);
+});
 
 const Popup = () => {
   return (

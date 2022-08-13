@@ -8,19 +8,19 @@
 // import { SUGGESTED_TAGS_SUCCESS } from 'actions'
 
 export async function saveSuccess(tabId, payload) {
-    const { resolved_url, given_url, isLink } = payload
-    const url = resolved_url || given_url
+  const { resolved_url, given_url, isLink } = payload;
+  const url = resolved_url || given_url;
 
-    // if (!isLink) setToolbarIcon(tabId, true)
+  // if (!isLink) setToolbarIcon(tabId, true)
 
-    // // Get item preview
-    // getItemPreview(tabId, payload)
+  // // Get item preview
+  // getItemPreview(tabId, payload)
 
-    // // Get list of users tags for typeahead
-    // getStoredTags(tabId)
+  // // Get list of users tags for typeahead
+  // getStoredTags(tabId)
 
-    // // Premium: Request suggested tags
-    // getTagSuggestions(url, tabId)
+  // // Premium: Request suggested tags
+  // getTagSuggestions(url, tabId)
 }
 
 // async function getItemPreview(tabId, payload) {

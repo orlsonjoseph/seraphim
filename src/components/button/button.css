@@ -1,70 +1,59 @@
-nodraft-button.pocket-button {
-  height: unset;
+button.nodraft-button {
   display: inline-block;
+
   position: relative;
-  font-family: var(--fontSansSerif);
   font-size: 16px;
+
+  height: unset;
   line-height: 110%;
-  border: none;
-  border-radius: 0.25rem;
+
   padding: 8px 12px;
-  transition: all 0.15s ease-out;
-  text-decoration: none;
-  text-transform: none;
+
   cursor: pointer;
-}
-
-nodraft-button.disabled {
-  pointer-events: none;
-  cursor: default;
-  opacity: 0.5;
-}
-
-nodraft-button:focus {
-  outline: none;
-}
-
-nodraft-button::before {
-  content: '';
-  position: absolute;
-  border: 2px solid var(--color-actionFocus);
-  top: -4px;
-  bottom: -4px;
-  left: -4px;
-  right: -4px;
-  border-radius: 0.5rem;
-}
-nodraft-button:hover {
+  
+  border: none;
+  border-radius: 0;
+  text-transform: none;
   text-decoration: none;
-}
-nodraft-button::before {
-  display: none;
-}
-nodraft-button:active {
-  display: none;
-}
 
-nodraft-button.primary {
-  background-color: var(--color-actionPrimary);
-  border: 2px solid var(--color-actionPrimary);
-  color: var(--color-actionPrimaryText);
+  transition: all 0.15s ease-out;
 }
+button.nodraft-button::before { display: none }
 
-nodraft-button.secondary {
-  background: none;
-  border: 2px solid var(--color-actionSecondary);
-  color: var(--color-actionSecondaryText);
-}
+button.nodraft-button:hover { text-decoration: none }
+button.nodraft-button:active { display: none }
+button.nodraft-button:focus { outline: none }
 
-nodraft-button:hover {
-  background-color: var(--color-actionSecondaryHover);
-  color: var(--color-actionSecondaryHoverText);
-}
-nodraft-button.inline {
+button.nodraft-button-inline {
   display: inline;
-  background: none;
+
   padding: 0;
-  color: var(--color-inlineButton);
-  font-size: 14px;
+  background: none;
+
   font-weight: 500;
+
+  color: var(--color-inline-button);
+}
+
+button.nodraft-button-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+button.nodraft-button-primary {
+  background-color: var(--color-action-primary);
+  border: 2px solid var(--color-action-primary);
+  color: var(--color-action-primary-text);
+}
+
+button.nodraft-button-secondary {
+  background: none;
+  border: 2px solid var(--color-action-secondary);
+  color: var(--color-action-secondary-text);
+}
+
+button.nodraft-button-secondary:hover {
+  background-color: var(--color-action-secondary-hover);
+  color: var(--color-action-secondary-hover-text);
 }

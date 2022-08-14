@@ -15,9 +15,9 @@ import React, { useState, useEffect, useRef } from 'react';
 export const App = () => {
   const appTarget = useRef(null);
 
+  const [theme, setTheme] = useState('nodraft-theme-system');
   const [saveStatus, setSaveStatus] = useState('saving');
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState('nodraft-theme-system');
 
   const handleMessages = (event) => {
     const { payload, action = 'Unknown Action' } = event || {};
@@ -28,24 +28,18 @@ export const App = () => {
         return setSaveStatus('saving');
       }
 
-      case SAVE_TO_NODRAFT_SUCCESS: {
-        return setSaveStatus('saved');
-      }
+      case SAVE_TO_NODRAFT_SUCCESS: return setSaveStatus('saved');
 
-      case SAVE_TO_NODRAFT_FAILURE: {
-        return setSaveStatus('save_failed');
-      }
+      case SAVE_TO_NODRAFT_FAILURE: return setSaveStatus('save_failed');
 
-      default: {
-        return;
-      }
+      default: return;
     }
   };
 
   useEffect(async () => {
     let newTheme = (await getConfiguration('theme')) || 'system';
     if (newTheme === 'system') newTheme = getOSModeClass();
-    setTheme('nodraft-theme-' + newTheme);
+    setTheme(`nodraft-theme-${newTheme}`);
   }, []);
 
   const handleDocumentClick = (e) => {
@@ -77,7 +71,7 @@ export const App = () => {
   const isRemoved = saveStatus === 'removed';
 
   return (
-    <div ref={appTarget} className={'nodraft-extension ' + theme}>
+    <div ref={appTarget} className={`nodraft-extension ${theme}`}>
       <Canvas isOpen={isOpen}>
         <Header saveStatus={saveStatus} />
         {/* {!isRemoved ? <ItemPreviewConnector /> : null}

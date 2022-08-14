@@ -37,12 +37,11 @@ var options = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
     options: path.join(__dirname, 'src', 'pages', 'options', 'index.jsx'),
-    popup: path.join(__dirname, 'src', 'pages', 'popup', 'index.jsx'),
     background: path.join(__dirname, 'src', 'pages', 'background', 'index.js'),
     contentScript: path.join(__dirname, 'src', 'pages', 'content', 'index.js'),
   },
   chromeExtensionBoilerplate: {
-    notHotReload: ['background', 'contentScript', 'devtools'],
+    notHotReload: ['background', 'contentScript'],
   },
   output: {
     filename: '[name].bundle.js',
@@ -161,12 +160,6 @@ var options = {
       template: path.join(__dirname, 'src', 'pages', 'options', 'index.html'),
       filename: 'options.html',
       chunks: ['options'],
-      cache: false,
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'pages', 'popup', 'index.html'),
-      filename: 'popup.html',
-      chunks: ['popup'],
       cache: false,
     }),
   ],

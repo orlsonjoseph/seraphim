@@ -22,6 +22,21 @@ export function extensionClicked(tab) {
   save({ tabId, title, favIconUrl, pageUrl });
 }
 
+export function contextClick(info, tab) {
+  const { menuItemId, linkUrl, pageUrl } = info
+  const { id: tabId, title } = tab
+
+  if (menuItemId === 'toolbarContextClickHome') return openHome()
+  // if (menuItemId === 'toolbarContextClickList') return openPocketList()
+  // if (menuItemId === 'toolbarContextClickLogOut') return logOut()
+  // if (menuItemId === 'toolbarContextClickLogIn') return logIn()
+
+  // Open list on non-standard pages/links
+  if (isSystemLink(linkUrl || pageUrl)) return openHome()
+
+  return save({ linkUrl, pageUrl, title, tabId })
+}
+
 export function openHome() {
   chrome.tabs.create({ url: NODRAFT_HOME });
 }
@@ -62,3 +77,15 @@ export function logIn(saveObject) {
 
   chrome.tabs.create({ url: NODRAFT_AUTH });
 }
+
+export async function setContextMenus() {
+  chrome.contextMenus.removeAll()
+
+  // Page Context - Right click menu on page
+  chrome.contextMenus.create({
+    title: "Save to Nodraft",
+    id: 'pageContextClick',
+    contexts: ['page', 'frame', 'editable', 'image', 'video', 'audio', 'link', 'selection'], // prettier-ignore
+  })
+}
+

@@ -3,29 +3,27 @@ import './header.css';
 
 import { Button } from '../button/button';
 
-export const Header = ({ saveStatus }) => {
-  const loadingStatus = ['saving', 'removing'];
-  const isLoading = loadingStatus.includes(saveStatus);
-
-  const errorStatus = ['save_failed', 'remove_failed'];
-  const hasError = errorStatus.includes(saveStatus);
+export const Header = ({ saveStatus, removeAction, saveAction }) => {
+  const isLoading = ['saving', 'removing'].includes(saveStatus);
+  const hasError = ['save_failed', 'remove_failed'].includes(saveStatus);
 
   return (
     <div className="nodraft-header">
-      <div className="save-status">
-        <div className="saveBlock">
-          {chrome.i18n.getMessage(`heading_${saveStatus}`)}
+      <div className="nodraft-status">
+        <div className="nodraft-status-message">
+          {"Saved successfully!"}
         </div>
       </div>
 
       {!hasError && saveStatus !== 'removed' ? (
-        <Button type="inline" onClick={removeAction}>
-          {chrome.i18n.getMessage('buttons_remove')}
+        <Button type='inline' onClick={removeAction}>
+          {'Remove'}
         </Button>
       ) : null}
+
       {saveStatus === 'removed' ? (
-        <Button type="inline" onClick={saveAction}>
-          {chrome.i18n.getMessage('buttons_save')}
+        <Button type='primary' onClick={saveAction}>
+          {'Save'}
         </Button>
       ) : null}
     </div>

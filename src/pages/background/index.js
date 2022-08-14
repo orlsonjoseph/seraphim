@@ -1,5 +1,13 @@
-import { extensionClicked, openHome } from './actions';
+import { contextClick, extensionClicked, setContextMenus, openHome } from './actions';
 import { getConfiguration, setConfiguration } from './../../common/interface';
+
+// Initialization
+chrome.runtime.onInstalled.addListener(function () {
+  setContextMenus()
+})
+
+// Context Menu
+chrome.contextMenus.onClicked.addListener(contextClick)
 
 chrome.action.onClicked.addListener(extensionClicked);
 

@@ -1,6 +1,5 @@
 {
   "manifest_version": 3,
-  "default_locale": "en",
   "name": "nodraft-extension",
   "description": "Supercharge your browsing experience",
   "options_page": "options.html",
@@ -25,7 +24,7 @@
     }
   ],
   "externally_connectable": {
-    "matches": ["http://127.0.0.1:7000/core/connect"]
+    "matches": ["http://127.0.0.1:8000/core/connect"]
   },
-  "permissions": ["storage", "tabs"]
+  "permissions": ["storage", "tabs", "contextMenus"]
 }

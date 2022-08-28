@@ -43,6 +43,7 @@ export function openHome() {
 
 async function save({ tabId, title, favIconUrl, pageUrl, linkUrl }) {
   const access_token = await getConfiguration('nodraft-extension-token');
+  console.log(access_token);
   if (!access_token)
     return logIn({ tabId, title, favIconUrl, pageUrl, linkUrl });
 

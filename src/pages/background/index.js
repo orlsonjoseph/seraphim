@@ -27,6 +27,8 @@ chrome.runtime.onMessage.addListener(function (message, sender) {
 
 // Exposes external endpoint for browser to set authentication token
 chrome.runtime.onMessageExternal.addListener(function (request, sender) {
+  console.log("External Listener:", request);
+  
   if (request.token)
     setConfiguration({ 'nodraft-extension-token': request.token });
 });

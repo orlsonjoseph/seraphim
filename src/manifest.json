@@ -26,7 +26,7 @@
   "externally_connectable": {
     "matches": [
       "https://nodraft.herokuapp.com/core/connect",
-      "https://nodraft.herokuapp.com/core/connect#"
+      "http://127.0.0.1:8000/core/connect"
     ]
   },
   "permissions": ["storage", "tabs", "contextMenus"]

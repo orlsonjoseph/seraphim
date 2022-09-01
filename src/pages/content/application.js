@@ -28,11 +28,16 @@ export const App = () => {
         return setSaveStatus('saving');
       }
 
-      case SAVE_TO_NODRAFT_SUCCESS: return setSaveStatus('saved');
+      case SAVE_TO_NODRAFT_SUCCESS: {
+        return setSaveStatus('saved');
+      }
 
-      case SAVE_TO_NODRAFT_FAILURE: return setSaveStatus('save_failed');
+      case SAVE_TO_NODRAFT_FAILURE: {
+        return setSaveStatus('save_failed');
+      }
 
-      default: return;
+      default:
+        return;
     }
   };
 

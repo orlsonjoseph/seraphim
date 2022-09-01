@@ -23,18 +23,18 @@ export function extensionClicked(tab) {
 }
 
 export function contextClick(info, tab) {
-  const { menuItemId, linkUrl, pageUrl } = info
-  const { id: tabId, title } = tab
+  const { menuItemId, linkUrl, pageUrl } = info;
+  const { id: tabId, title } = tab;
 
-  if (menuItemId === 'toolbarContextClickHome') return openHome()
+  if (menuItemId === 'toolbarContextClickHome') return openHome();
   // if (menuItemId === 'toolbarContextClickList') return openPocketList()
   // if (menuItemId === 'toolbarContextClickLogOut') return logOut()
   // if (menuItemId === 'toolbarContextClickLogIn') return logIn()
 
   // Open list on non-standard pages/links
-  if (isSystemLink(linkUrl || pageUrl)) return openHome()
+  if (isSystemLink(linkUrl || pageUrl)) return openHome();
 
-  return save({ linkUrl, pageUrl, title, tabId })
+  return save({ linkUrl, pageUrl, title, tabId });
 }
 
 export function openHome() {
@@ -43,7 +43,6 @@ export function openHome() {
 
 async function save({ tabId, title, favIconUrl, pageUrl, linkUrl }) {
   const access_token = await getConfiguration('nodraft-extension-token');
-  console.log(access_token);
   if (!access_token)
     return logIn({ tabId, title, favIconUrl, pageUrl, linkUrl });
 
@@ -52,14 +51,12 @@ async function save({ tabId, title, favIconUrl, pageUrl, linkUrl }) {
 
   try {
     const payload = await saveBookmark({ tabId, title, favIconUrl, url });
+
     const message = payload
       ? { action: SAVE_TO_NODRAFT_SUCCESS, payload }
       : { action: SAVE_TO_NODRAFT_FAILURE, payload };
 
-    chrome.runtime.sendMessage({ tabId, message }, function (response) {
-      console.log('response', response);
-    });
-
+    chrome.tabs.sendMessage(tabId, message);
     if (payload) saveSuccess(tabId, { ...payload, isLink: Boolean(linkUrl) });
   } catch (error) {
     // If it is an auth error let's redirect the user
@@ -80,13 +77,12 @@ export function logIn(saveObject) {
 }
 
 export async function setContextMenus() {
-  chrome.contextMenus.removeAll()
+  chrome.contextMenus.removeAll();
 
   // Page Context - Right click menu on page
   chrome.contextMenus.create({
-    title: "Save to Nodraft",
+    title: 'Save to Nodraft',
     id: 'pageContextClick',
     contexts: ['page', 'frame', 'editable', 'image', 'video', 'audio', 'link', 'selection'], // prettier-ignore
-  })
+  });
 }
-
